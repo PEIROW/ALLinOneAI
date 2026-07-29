@@ -2,43 +2,74 @@
 
 **All-in-One Android AI Chatbot**
 
-A modern Android chatbot built with Kotlin + Jetpack Compose that supports multiple AI providers:
+A modern Android chatbot built with **Kotlin + Jetpack Compose** that supports multiple AI providers in one app.
 
-- **Local open-source models** via Ollama (including uncensored models)
+## Supported Providers
+
+- **Local open-source models** via [Ollama](https://ollama.com) (including uncensored models)
 - **ChatGPT** (OpenAI)
 - **Grok** (xAI)
 - **Gemini** (Google)
 
-### Features
+## Features
 
-- Multi-provider switching
-- NSFW Mode with editable system prompt + selectable uncensored models
+- Multi-provider switching from the menu
+- **NSFW Mode** toggle with editable system prompt + selectable uncensored models
 - Encrypted storage of API keys (Android Keystore + EncryptedSharedPreferences)
-- Biometric lock (fingerprint / face) for Settings
+- Biometric lock (fingerprint / face) before opening Settings
 - Notification channels + clickable deep links
-- Runtime permission handling with rationale dialogs
-- Clean Jetpack Compose UI
+- Clean Material 3 UI
 
-### Tech Stack
+## Project Status
 
-- Kotlin
-- Jetpack Compose
-- OkHttp
-- AndroidX Security Crypto
-- AndroidX Biometric
-- Navigation Compose
+The critical project structure issues have been resolved. The app now contains:
 
-### Getting Started
+- Complete Gradle setup
+- AndroidManifest + Application class
+- MainActivity + Navigation
+- ChatScreen + SettingsScreen
+- ChatViewModel
+- All previously written helpers (Repository, Preferences, Biometric, Notifications)
 
-1. Clone the repository
-2. Open in Android Studio
-3. Add your API keys in Settings (or use local Ollama)
-4. For local models: install [Ollama](https://ollama.com) and pull models (e.g. `ollama pull dolphin-llama3`)
+## How to Run
 
-### Project Status
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/munster1987/ALLinOneAI.git
+   ```
 
-This is an evolving starter project. Core architecture and major features are implemented.
+2. **Open in Android Studio** (Hedgehog or newer recommended)
+   - File → Open → select the project folder
+   - Let Gradle sync finish
+
+3. **Create Launcher Icons** (required once)
+   - Right-click `res` → New → Image Asset
+   - Choose Launcher Icons (Adaptive and Legacy)
+   - Generate default icons
+
+4. **Run on Emulator or Device**
+   - For local models: Install [Ollama](https://ollama.com) on your Windows machine and run:
+     ```powershell
+     ollama pull phi3
+     ollama pull dolphin-llama3
+     ollama serve
+     ```
+   - The emulator uses `10.0.2.2` to reach Ollama on the host machine.
+
+5. **Add API Keys** (optional)
+   - Open the app → Settings (gear icon, requires biometric)
+   - Paste your OpenAI / xAI / Gemini keys
+
+## Important Notes
+
+- Minimum SDK: 26
+- Cleartext traffic is allowed for local Ollama (`http://10.0.2.2`)
+- On a physical device, change the Ollama URL in `ChatRepository.kt` from `10.0.2.2` to your computer’s local IP address.
+
+## Package
+
+`com.example.dataandroidbot`
 
 ---
 
-Created with assistance from Grok.
+Built with assistance from Grok.
