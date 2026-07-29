@@ -59,6 +59,10 @@ Open the app → tap the gear icon (Settings) → enter your OpenAI / xAI / Gemi
 - Package: `com.example.dataandroidbot`
 - On a **physical device**, change `10.0.2.2` in `ChatRepository.kt` to your computer’s local IP address.
 
+## License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
 ---
 
 Built with assistance from Grok.
